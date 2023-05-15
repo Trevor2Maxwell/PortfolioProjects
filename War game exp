@@ -1,0 +1,46 @@
+import random
+
+# Function to create a deck of cards
+def create_deck():
+    ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+    suits = ['Spades', 'Hearts', 'Diamonds', 'Clubs']
+    deck = [(rank, suit) for rank in ranks for suit in suits]
+    random.shuffle(deck)
+    return deck
+
+# Function to compare card values
+def compare_cards(card1, card2):
+    ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+    return ranks.index(card1[0]) - ranks.index(card2[0])
+
+# Function to play the game
+def play_war():
+    deck = create_deck()
+    player1_cards = deck[:len(deck)//2]
+    player2_cards = deck[len(deck)//2:]
+
+    while len(player1_cards) > 0 and len(player2_cards) > 0:
+        input("Press Enter to play a round...")
+        player1_card = player1_cards.pop(0)
+        player2_card = player2_cards.pop(0)
+        
+        print("Player 1 plays:", player1_card)
+        print("Player 2 plays:", player2_card)
+        
+        result = compare_cards(player1_card, player2_card)
+        if result > 0:
+            print("Player 1 wins the round!")
+            player1_cards.extend([player1_card, player2_card])
+        elif result < 0:
+            print("Player 2 wins the round!")
+            player2_cards.extend([player1_card, player2_card])
+        else:
+            print("It's a tie!")
+
+    if len(player1_cards) > 0:
+        print("Player 1 wins the game!")
+    else:
+        print("Player 2 wins the game!")
+
+# Start the game
+play_war()
