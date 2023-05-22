@@ -179,3 +179,7 @@ From PortfolioProject..CovidDeaths
 --Where location like '%states%'
 Group by Location, Population, date
 order by PercentPopulationInfected desc
+
+
+Dashboard built in tableau 
+https://public.tableau.com/app/profile/trevor.maxwell4413/viz/Covidnumbersdashboard/Dashboard1?publish=yes
